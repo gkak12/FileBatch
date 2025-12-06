@@ -30,4 +30,4 @@ spring:
       names: importUserJob
 
 file:
-  input: D:\\download\\test.txt
+  input: D:\\download\\batch_test.txt
