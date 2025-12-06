@@ -1,8 +1,9 @@
 package com.file.batch.config
 
 import com.file.batch.model.User
-import com.file.batch.processor.UserWriter
 import com.file.batch.processor.UserProcessor
+import com.file.batch.processor.UserReader
+import com.file.batch.processor.UserWriter
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
@@ -12,12 +13,9 @@ import org.springframework.batch.core.repository.JobRepository
 import org.springframework.batch.core.step.builder.StepBuilder
 import org.springframework.batch.item.ItemWriter
 import org.springframework.batch.item.file.FlatFileItemReader
-import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder
-import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.FileSystemResource
 import org.springframework.transaction.PlatformTransactionManager
 
 @Configuration
@@ -27,24 +25,7 @@ class BatchConfig {
     // --- Reader (읽기) ---
     @Bean
     fun reader(@Value("\${file.input}") inputFilePath: String): FlatFileItemReader<User> {
-        println(">>> [DEBUG] Reader Input File Path: [$inputFilePath]")
-
-        val resource = FileSystemResource(inputFilePath)
-        if (!resource.exists()) {
-            println(">>> [ERROR] 파일이 존재하지 않습니다! 경로를 확인해주세요: ${resource.path}")
-        } else {
-            println(">>> [SUCCESS] 파일을 찾았습니다. 크기: ${resource.contentLength()} bytes")
-        }
-
-        return FlatFileItemReaderBuilder<User>()
-            .name("userItemReader")
-            .resource(FileSystemResource(inputFilePath))
-            .delimited()
-            .names("firstName", "lastName", "email")
-            .fieldSetMapper(BeanWrapperFieldSetMapper<User>().apply {
-                setTargetType(User::class.java)
-            })
-            .build()
+        return UserReader().createReader(inputFilePath, "userReader")
     }
 
     // --- Processor (처리) ---
