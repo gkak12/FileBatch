@@ -4,7 +4,7 @@ spring:
     username: lmdb_user
     password: lmdb123!
     driverClassName: org.mariadb.jdbc.Driver
-  
+
   jpa:
     hibernate:
       ddl-auto: none  # JPA 엔티티가 있다면 'none'으로 설정하여 Spring Batch 스키마 초기화와 충돌 방지
@@ -17,8 +17,7 @@ spring:
   sql:
     init:
       mode: never # SQL 스크립트 실행을 무조건 활성화
-#      platform: h2 # resources/schema-h2.sql 파일을 찾도록 명시
-  
+
   batch:
     platform: mariadb
     jdbc:

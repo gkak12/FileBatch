@@ -13,11 +13,11 @@ import java.time.format.DateTimeFormatter
 @SpringBootApplication
 @EnableScheduling
 class FileBatchApplication(
-    private val jobLauncher: JobLauncher, // JobLauncher를 클래스에 주입
-    private val importUserJob: Job // importUserJob을 클래스에 주입
+    private val jobLauncher: JobLauncher,
+    private val importUserJob: Job
 ) {
 
-    @Scheduled(cron = "0 29 10 * * ?") // 예시: 매일 새벽 2시에 실행
+    @Scheduled(cron = "0 0 2 * * ?") // 예시: 매일 새벽 2시에 실행
     fun runBatchJob() {
         val jobParameters = JobParametersBuilder()
             // 고유한 Job 인스턴스를 위해 현재 시간 파라미터 추가
