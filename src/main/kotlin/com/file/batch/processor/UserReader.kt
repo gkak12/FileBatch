@@ -5,7 +5,9 @@ import org.springframework.batch.item.file.FlatFileItemReader
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper
 import org.springframework.core.io.FileSystemResource
+import org.springframework.stereotype.Component
 
+@Component
 class UserReader {
 
     /**

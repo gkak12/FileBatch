@@ -2,7 +2,9 @@ package com.file.batch.processor
 
 import com.file.batch.model.User
 import org.springframework.batch.item.ItemProcessor
+import org.springframework.stereotype.Component
 
+@Component
 class UserProcessor : ItemProcessor<User, User> {
 
     // read: User, write: User

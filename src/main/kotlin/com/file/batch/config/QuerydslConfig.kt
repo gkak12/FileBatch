@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
 @Configuration
-@ConditionalOnProperty(name = ["spring.datasource.use"], havingValue = "true", matchIfMissing = false)
+@ConditionalOnProperty(name = ["spring.datasource.use"], havingValue = "true", matchIfMissing = true)
 class QuerydslConfig {
 
     @PersistenceContext

@@ -4,6 +4,7 @@ import com.file.batch.model.User
 import com.file.batch.processor.UserProcessor
 import com.file.batch.processor.UserReader
 import com.file.batch.processor.UserWriter
+import com.file.batch.repository.UserRepository
 import org.springframework.batch.core.Job
 import org.springframework.batch.core.Step
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing
@@ -34,8 +35,8 @@ class BatchConfig {
 
     // --- Writer (쓰기 - 콘솔 출력) ---
     @Bean
-    fun writer(): ItemWriter<User> {
-        return UserWriter()
+    fun writer(userRepository: UserRepository): ItemWriter<User> {
+        return UserWriter(userRepository = userRepository)
     }
 
     // --- Step (단계) 정의 ---
