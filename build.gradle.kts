@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.25"
+    kotlin("kapt") version "1.9.25"
     kotlin("plugin.spring") version "1.9.25"
 
     id("org.springframework.boot") version "3.3.5"
@@ -9,6 +10,8 @@ plugins {
 group = "com.file.batch"
 version = "0.0.1-SNAPSHOT"
 description = "FileBatch"
+
+val queryDslVersion = "5.0.0"
 
 java {
     toolchain {
@@ -24,8 +27,14 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtimeOnly("org.mariadb.jdbc:mariadb-java-client") // MariaDB JDBC 드라이버 추가
+    runtimeOnly("com.mysql:mysql-connector-j")
     implementation("com.github.f4b6a3:ulid-creator:5.2.3")
+
+    // QueryDSL
+    implementation("com.querydsl:querydsl-jpa:$queryDslVersion:jakarta")
+    kapt("com.querydsl:querydsl-apt:$queryDslVersion:jakarta")
+    kapt("jakarta.annotation:jakarta.annotation-api")
+    kapt("jakarta.persistence:jakarta.persistence-api")
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.batch:spring-batch-test")
