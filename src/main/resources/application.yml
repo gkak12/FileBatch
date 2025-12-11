@@ -22,5 +22,9 @@ spring:
     job:
       enabled: false
 
+jasypt:
+  encryptor:
+    bean: jasyptEncryptor # Jasypt 빈 등록
+
 file:
   input: D:\\download\\batch_test.txt
