@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://192.168.100.134:3306/batch?useSSL=false&serverTimezone=Asia/Seoul
-    username: lmdb_user
-    password: lmdb123!
+    url: jdbc:mysql://localhost:3306/batch?useSSL=false&serverTimezone=Asia/Seoul
+    username: ENC(CP6FzQYT/Sv52TQi4/9U2Q==)
+    password: ENC(36jn6vIZOaywDFHJOUEHGBwjf0ipBYv/)
     driverClassName: com.mysql.cj.jdbc.Driver
 
   jpa:
