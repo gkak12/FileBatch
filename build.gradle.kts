@@ -36,6 +36,9 @@ dependencies {
     kapt("jakarta.annotation:jakarta.annotation-api")
     kapt("jakarta.persistence:jakarta.persistence-api")
 
+    // Jasypt
+    implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.springframework.batch:spring-batch-test")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -45,4 +48,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
     kotlinOptions {
         jvmTarget = "21"
     }
+}
+
+tasks.test {
+    useJUnitPlatform()
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
+    // ignoreFailures = true
 }

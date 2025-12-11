@@ -13,17 +13,16 @@ spring:
   # 애플리케이션 이름 설정
   application:
     name: FileBatch
-  
+
   sql:
     init:
       mode: never # SQL 스크립트 실행을 무조건 활성화
 
   batch:
-    platform: mariadb
     jdbc:
       initialize-schema: never
     job:
       enabled: false
 
 file:
-  input: C:\\Users\\fintech\\Downloads\\batch_test.txt
+  input: D:\\download\\batch_test.txt
