@@ -27,7 +27,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    runtimeOnly("com.mysql:mysql-connector-j")
+
+    runtimeOnly("org.mariadb.jdbc:mariadb-java-client") // MariaDB JDBC 드라이버 추가
     implementation("com.github.f4b6a3:ulid-creator:5.2.3")
 
     // QueryDSL
