@@ -32,8 +32,8 @@ class JasyptConfigTest {
     @Test
     @DisplayName("jasypt 인코딩 테스트")
     fun jasyptEncodingTest(){
-        val username = "root"
-        val password = "guswns124%"
+        val username = "lmdb_user"
+        val password = "lmdb123!"
 
         log.info("username: {}", jasyptEncoding(username))
         log.info("password: {}", jasyptEncoding(password))

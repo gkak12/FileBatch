@@ -1,8 +1,8 @@
 spring:
   datasource:
     url: jdbc:mariadb://192.168.100.134:3306/batch?useSSL=false&serverTimezone=Asia/Seoul
-    username: lmdb_user
-    password: lmdb123!
+    username: ENC(mJ1p9qUWduBp2jYzSXNjfzu6OuXPOPBM)
+    password: ENC(BvFDqKaeFKnB7fgaLQeyCSiI3q2kD+4P)
     driverClassName: org.mariadb.jdbc.Driver
 
   jpa:
