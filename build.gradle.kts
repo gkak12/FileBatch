@@ -28,8 +28,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
-    // MySQL
-    runtimeOnly("com.mysql:mysql-connector-j")
+    val targetEnv = project.findProperty("targetEnv") as String? ?: "dev"
+
+    if (targetEnv == "local") {
+        println("=== RDBMS Driver: MariaDB ===")
+        runtimeOnly("org.mariadb.jdbc:mariadb-java-client") // MariaDB
+    } else {
+        println("=== RDBMS Driver: MySQL ===")
+        runtimeOnly("com.mysql:mysql-connector-j")  // MySQL
+    }
 
     // ULID
     implementation("com.github.f4b6a3:ulid-creator:5.2.3")
